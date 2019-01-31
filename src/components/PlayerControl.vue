@@ -1,7 +1,19 @@
  <template>
   <div id="player-controls">
     <button @click="startPlay">Play</button>
-    <div id="seek-bar">SEEEEK</div>
+    <div id="slider-container">
+      <input
+        v-model="sliderValue"
+        id="slider"
+        @change="readSlider"
+        type="range"
+        max="11100"
+        step="10"
+        value="0"
+      >
+      <!-- <div>Time: {{sliderValue/1000}}</div> -->
+      <div>Time: {{currTime/1000}}</div>
+    </div>
     <button @click="pausePlay">Pause</button>
   </div>
 </template>
@@ -10,12 +22,20 @@
 <script>
 import eventBus, {
   START_PLAY,
-  PAUSE_PLAY
+  PAUSE_PLAY,
+  SLIDER
 } from "../services/eventBusService.js";
 
 export default {
   name: "PlayerControl",
   components: {},
+  props: ["currTime"],
+
+  data() {
+    return {
+      sliderValue: 0
+    };
+  },
 
   methods: {
     startPlay() {
@@ -26,6 +46,12 @@ export default {
     pausePlay() {
       console.log("button pause");
       eventBus.$emit(PAUSE_PLAY);
+    },
+
+    readSlider() {
+      var sliderValue = document.querySelector("#slider").value;
+      eventBus.$emit(SLIDER, sliderValue);
+      console.log("slider", sliderValue);
     }
   }
 };
@@ -45,6 +71,7 @@ export default {
 button {
   display: inline-block;
   height: 50px;
+  width: 80px;
   border-radius: 5px;
 }
 

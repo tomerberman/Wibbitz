@@ -5,7 +5,6 @@
 
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'Sc0El0',
@@ -15,13 +14,6 @@ export default {
 </script>
 
 <style>
-
-/* content:Welcome to Japan", */
-         /* id:e072; */
-         /* startTime: 100;
-         duration: 5000 */
-         /* type:text; */
-
 
 #e072 {
     z-index: 100;
