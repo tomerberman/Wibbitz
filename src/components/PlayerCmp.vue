@@ -11,8 +11,11 @@
 
 
 <script>
-import eventBus, { START_PLAY, PAUSE_PLAY } from "../services/eventBusService.js";
-import PlayerControl from "./PlayerControl"
+import eventBus, {
+  START_PLAY,
+  PAUSE_PLAY
+} from "../services/eventBusService.js";
+import PlayerControl from "./PlayerControl";
 import Sc0El0 from "./Sc0El0";
 import Sc0El1 from "./Sc0El1";
 import Sc0El2 from "./Sc0El2";
@@ -21,12 +24,12 @@ export default {
   name: "PlayerCmp",
 
   data() {
-      return {
-          running: false,
-          playStartTime: Date.now(),
-          timePassed: 0,
-          videoCurrTime: 0
-      }
+    return {
+      running: false,
+      playStartTime: Date.now(),
+      timePassed: 0,
+      videoCurrTime: 0
+    };
   },
 
   components: {
@@ -37,27 +40,27 @@ export default {
   },
 
   created() {
-    eventBus.$on(START_PLAY, _ => (this.running = true));
+    eventBus.$on(START_PLAY, _ => this.startClock());
     eventBus.$on(PAUSE_PLAY, _ => (this.running = false));
-    this.runInterval();
   },
 
   methods: {
-      runInterval() {
-          const myInterval = setInterval(this.checkTime,16)
-      },
+    runInterval() {
+      const myInterval = setInterval(this.checkTime, 16);
+    },
 
-      startClock() {
-          this.playStartTime = Date.now();
-      },
+    startClock() {
+      this.playStartTime = Date.now();
+      this.running = true;
+      this.runInterval();
+    },
 
-      checkTime() {
-          this.timePassed = Date.now() - this.playStartTime;
-          console.log('time',this.timePassed);
-      }
+    checkTime() {
+      this.timePassed = Date.now() - this.playStartTime;
+      console.log("time", this.timePassed);
+    }
   }
 };
-
 </script>
 
 <style scoped>
