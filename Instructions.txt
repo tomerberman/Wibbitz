@@ -1,0 +1,27 @@
+-- Wibbitz Frontend Developer Test --
+
+Your job is to create a next generation clip player with images, videos and texts.
+
+General Information
+- You can use React / Angular / Vue.js or vanilla JS.
+- Clip data is in clip.json
+- Each scene contains multiple elements.
+- The time an element should be visible is determined by its startTime & duration.
+- More than one element can be visible at the same time.
+- startTime & duration are in miliseconds.
+- left / right / top / bottom represnts the element's position on screen.
+
+1. Create controls with play, pause buttons and seek bar to control the player.
+2. Using the controls will play / pause / seek between the elements in the view, based on clip.json.
+3. Controls should change the view of the player based on clip.json data.
+
+
+   -------------------------------------------------
+   UI                            20          
+   -------------------------------------------------
+   Architecture                  60          
+   -------------------------------------------------
+   Performance                   10
+   -------------------------------------------------
+   Style                         10
+   -------------------------------------------------
